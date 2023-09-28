@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const authUtil = require("../util/authentication")
 const validation = require("../util/validation")
-
+const sessionFlash = require("../middlewares/session-flash")
 // const expressSession = require("express-session");
 
 // const createSessionConfig = require("../config/session");
@@ -21,17 +21,32 @@ function getSignup(req, res) {
   res.render("customer/auth/signup");
 }
 
-async function signup(req, res) {
+async function signup(req, res,next) {
+  const enteredData = {
+    email: req.body.email,
+    password:req.body.password,
+    fullname:req.body.fullname,
+    street: req.body.street,
+    postal: req.body.postal,
+    city: req.body.city
+  }
 
-  if(!validation.userDetailsAreValid || !validation.emailIsConfirmed(req.body.email, req.body[confirm-email])(    req.body.email,
+  if (!validation.userDetailsAreValid(req.body.email,
     req.body.password,
     req.body.fullname,
     req.body.street,
     req.body.postal,
-    req.body.city)){
-    res.redirect("/signup")
+    req.body.city) || !validation.emailIsConfirmed(req.body.email, req.body["confirm-email"])) {
+      sessionFlash.flashDataToSession(req,{
+        errorMessage:"Please check Your Input - It Must Be 6 Characters Long",...enteredData
+      },function(){
+        res.redirect("/signup")
+ 
+      })
     return
   }
+
+
   const user = new User(
     req.body.email,
     req.body.password,
@@ -40,12 +55,19 @@ async function signup(req, res) {
     req.body.postal,
     req.body.city
   );
-  const existsAlready = await user.existsAlready ()
+  const existsAlready = await user.existsAlready()
   if (existsAlready) {
-    res.redirect("/signup")
+    sessionFlash.flashDataToSession(req,{
+      errorMessage:"User Exists Already! Try Logging in Instead",
+      ...enteredData
+    },function(){
+      res.redirect("/signup") // ........
+
+    })
     return
-    
   }
+
+
   try {
     await user.signup()
 
@@ -61,28 +83,44 @@ async function signup(req, res) {
 }
 
 function getLogin(req, res) {
-    res.render("customer/auth/login");
+  res.render("customer/auth/login");
 
 }
-async function login(req,res){
-  const user = new User(req.body.email,req.body.password)
+
+// const sessionErrorData = 
+async function login(req, res) {
+  const user = new User(req.body.email, req.body.password)
   const existingUser = await user.getUserWithSameEmail()
-  if(!existingUser){
-    res.redirect("/login") 
+  if (!existingUser) {
+    sessionFlash.flashDataToSession(req,{
+      errorMessage:"Invalid Credentials! Please Double-Check Yourv Password",
+      email:user.email,
+      password:user.password
+    },function(){
+      res.redirect("/login")
+
+    })
     return
   }
   const passwordIsCorrect = await user.hasMatchingPassword(existingUser.password)
-  if(!passwordIsCorrect){
-    res.redirect("/login")
+  if (!passwordIsCorrect) {
+    sessionFlash.flashDataToSession(req,{
+      errorMessage:"Invalid Credentials! Please Double-Check Yourv Password",
+      email:user.email,
+      password:user.password
+    },function(){
+      res.redirect("/login")
+    }) 
     return
   }
-  authUtil.createUserSession(req,existingUser,function(){
+  authUtil.createUserSession(req, existingUser, function () {
     res.redirect("/")
   })
 }
+
 module.exports = {
   getSignup: getSignup,
   getLogin: getLogin,
   signup: signup,
-  login:login
+  login: login
 };
