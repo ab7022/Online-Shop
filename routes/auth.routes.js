@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
 router.get("/signup",authController.getSignup)
 router.post("/signup",authController.signup)
-
+router.post("/logout",authController.logout)
 router.get("/login",authController.getLogin )
 router.post("/login",authController.login )
 

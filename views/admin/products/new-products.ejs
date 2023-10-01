@@ -1,0 +1,17 @@
+<%- include("../../customer/includes/head") %>
+ <link rel="stylesheet" href="/styles/forms.css">
+<!-- <link rel="stylesheet" href="/styles/auth.css"> -->
+</head>
+<body>
+<%- include("../../customer/includes/header") %>
+<main>
+    <h1>Add New Products</h1>
+<%- include("includes/product-form",{submitPath:"/admin/products",product:{
+    title:"",
+    summary:"",
+    price:"",
+    description:"" 
+},
+imageRequired:true}) %>
+</main>
+<%- include("../../customer/includes/footer") %>
