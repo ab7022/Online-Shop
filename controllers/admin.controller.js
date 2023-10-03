@@ -1,3 +1,11 @@
+const { FindCursor } = require("mongodb");
+const mongoose = require('mongoose');
+const express = require('express');
+const csrf = require('csurf');
+const csrfProtection = csrf();
+const router = express.Router();
+router.use(csrfProtection);
+
 const Product = require("../models/product.model")
 async function getProducts(req, res,next) {
     try {
@@ -29,14 +37,14 @@ async function createNewProducts(req, res,next) {
     res.redirect("/admin/products");
 }
 
-async function getUpdateProduct(req,res,next) {
+async function getUpdateProduct(req, res, next) {
     try {
-        const product = await Product.findById(req.params.id) 
-        res.render("admin/products/update-product",{product:product})
+        const productId = new mongoose.Types.ObjectId(req.params.id); // Use 'new' here
+        const product = await Product.findById(productId);
+        res.render("admin/products/update-product", { product: product });
     } catch (error) {
-        next(error)
+        next(error);
     }
-  
 }
 
 async function updateProduct(req,res,next) {
@@ -56,11 +64,34 @@ async function updateProduct(req,res,next) {
     res.redirect("/admin/products")
 }
 
+async function deleteProduct(req, res, next) {
+    try {
+        const productId = req.params.id;
+        if (!mongoose.Types.ObjectId.isValid(productId)) {
+            return res.status(400).json({ message: "Invalid Product ID" });
+        }
+        console.log("productId:", productId);
+        console.log("csrfToken:", _csrfToken());
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        await product.remove();
+        res.json({ message: "Deleted Product!" });
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+
 
 module.exports = {
     getProducts,
     getNewProducts,
     createNewProducts,
     getUpdateProduct:getUpdateProduct,
-    updateProduct:updateProduct
+    updateProduct:updateProduct,
+    deleteProduct:deleteProduct
 };

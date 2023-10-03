@@ -1,8 +1,7 @@
-// const mongoDbStore = require("connect-mongodb-session");
 const expressSession = require("express-session");
+const MongoDbStore = require("connect-mongodb-session")(expressSession);
 
 function createSessionStore() {
-    const MongoDbStore = require("connect-mongodb-session")(expressSession); // Import and initialize the store properly
     const store = new MongoDbStore({
         uri: "mongodb://localhost:27017/online-shop", // Include the database name in the URI
         collection: "sessions"
@@ -17,7 +16,7 @@ function createSessionConfig() {
         saveUninitialized: false,
         store: createSessionStore(),
         cookie: {
-            maxAge:   60 * 60 
+            maxAge: 60 * 60 * 1000, // Set to 1 hour (in milliseconds)
         }
     };
 }
