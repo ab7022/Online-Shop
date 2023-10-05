@@ -9,11 +9,11 @@ const createSessionConfig = require("../config/session");
 const sessionConfig = createSessionConfig();
 app.use(express.urlencoded({ extended: false }));
 app.use(expressSession(sessionConfig));
-const csrf = require("csurf");
+// const csrf = require("csurf");
 
-app.use(csrf());
-const csrfProtection = csrf({ cookie: true });
-app.use(csrfProtection);
+// app.use(csrf());
+// const csrfProtection = csrf({ cookie: true });
+// app.use(csrfProtection);
 
 const User = require("../models/user.model");
 const userDetailsAreValid = require('../util/validation');
@@ -31,9 +31,9 @@ function getSignup(req, res) {
       city: ""
     }
   }
-  const csrfToken = req.csrfToken(); // Get the CSRF token
+ // Get the CSRF token
 
-  res.render("customer/auth/signup", { inputData: sessionData, csrfToken });
+  res.render("customer/auth/signup", { inputData: sessionData });
 }
 
 async function signup(req, res, next) {
@@ -93,9 +93,9 @@ async function signup(req, res, next) {
     return
   }
 
-  if (req.csrfToken() !== req.body._csrf) {
-    return res.status(403).send('Invalid CSRF token');
-  }
+  // if (csrfToken !== req.body._csrf) {
+  //   return res.status(403).send('Invalid CSRF token');
+  // }
 
   console.log(user)
   res.redirect("/login")
@@ -109,13 +109,11 @@ function getLogin(req, res) {
       password: "",
     }
   }
-  const csrfToken = req.csrfToken(); // Get the CSRF token
 
-  res.render("customer/auth/login", { inputData: sessionData, csrfToken });
+  res.render("customer/auth/login", { inputData: sessionData});
 }
 
 async function login(req, res) {
-  const csrfToken = req.csrfToken();
   const user = new User(req.body.email, req.body.password);
   const existingUser = await user.getUserWithSameEmail();
 
@@ -137,7 +135,7 @@ async function login(req, res) {
       email: user.email,
       password: user.password,
     }, function () {
-      res.redirect(`/login?csrfToken=${csrfToken}`);
+      res.redirect("/login");
     });
     return;
   }

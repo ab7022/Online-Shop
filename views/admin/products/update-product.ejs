@@ -1,12 +1,12 @@
-<%- include("../../customer/includes/head") %>
+<%- include("../../shared/includes/head") %>
  <link rel="stylesheet" href="/styles/forms.css">
 <!-- <link rel="stylesheet" href="/styles/auth.css"> -->
 <script src="/scripts/image-preview.js" defer></script>
 </head>
 <body>
-<%- include("../../customer/includes/header") %>
+<%- include("../../shared/includes/header") %>
 <main>
     <h1>Update Products</h1>
     <%- include("includes/product-form",{submitPath:"/admin/products/"+product.id,product:product,imageRequired:false}) %>
 </main>
-<%- include("../../customer/includes/footer") %>
+<%- include("../../shared/includes/footer") %>

@@ -1,10 +1,10 @@
-<%- include("../../customer/includes/head") %>
- <link rel="stylesheet" href="/styles/forms.css">
+<%- include("../../shared/includes/head") %>
+ <!-- <link rel="stylesheet" href="/styles/forms.css"> -->
 <!-- <link rel="stylesheet" href="/styles/auth.css"> -->
 <script src="/scripts/image-preview.js" defer></script>
 </head>
 <body>
-<%- include("../../customer/includes/header") %>
+<%- include("../../shared/includes/header") %>
 <main>
     <h1>Add New Products</h1>
 <%- include("includes/product-form",{submitPath:"/admin/products",product:{
@@ -15,4 +15,4 @@
 },
 imageRequired:true}) %>
 </main>
-<%- include("../../customer/includes/footer") %>
+<%- include("../../shared/includes/footer") %>

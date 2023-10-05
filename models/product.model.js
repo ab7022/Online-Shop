@@ -69,11 +69,11 @@ class Product {
     }
     replaceImage(newImage){
         this.image=newImage
-        this.updateImageData
+        this.updateImageData()
     }
     remove(){
         const productId = new mongodb.ObjectId(this.id)
-        db.getDb().collection("products").deleteOne({_id:productId})
+       return db.getDb().collection("products").deleteOne({_id:productId})
     }
 }
 module.exports = Product

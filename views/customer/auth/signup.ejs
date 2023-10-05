@@ -1,10 +1,10 @@
-<%- include("../includes/head",{pageTitle:"Signup"}) %>
-<link rel="stylesheet" href="/styles/forms.css">
-<link rel="stylesheet" href="/styles/auth.css">
+<%- include("../../shared/includes/head",{pageTitle:"Signup"}) %>
+<!-- <link rel="stylesheet" href="/styles/forms.css">
+<link rel="stylesheet" href="/styles/auth.css"> -->
 
 </head>
 <body>
-    <%- include("../includes/header") %>
+    <%- include("../../shared/includes/header") %>
     <main>
     <h1>Create New Account</h1>
     <% if(inputData.errorMessage){ %>
@@ -14,7 +14,6 @@
         </section>
         <% } %>
     <form action="/signup" method="POST">   <p>
-        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
             <label for="email">Email</label>
             <input type="email" name="email" id="email" value="<%= inputData.email %>" required>
@@ -50,4 +49,4 @@
         </p>
     </form>    
     </main>
-    <%- include("../includes/footer") %>
+    <%- include("../../shared/includes/footer") %>
