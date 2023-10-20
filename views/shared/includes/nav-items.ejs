@@ -5,8 +5,9 @@
     <% } %>
     <% if (!locals.isAdmin) { %>
         <li><a href="/">Shop</a></li>
-        <li><a href="/cart">Cart</a></li>
-    <% } %>
+        <%- console.log("Cart:", locals.cart) %>
+        <li><a href="/cart">Cart <span class="badge"><%= locals.cart.totalQuantity %></span> </a></li>
+         <% } %>
 
     <% if (locals.isAuth && !locals.isAdmin) { %>
         <li><a href="/orders">Orders</a></li>

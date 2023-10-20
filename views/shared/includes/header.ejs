@@ -1,10 +1,14 @@
+<%
+const baseIncludesDir = "../../shared/includes/";
+%>
 
 <header id="main-header">
     <div id="logo"> <a href="/">WDE</a>
     </div>
     <nav>
-        
-        <%- include("nav-items") %>
+        <%- include(`${baseIncludesDir}nav-items`) %>
+
+    
     </nav>
     <button id="mobile-menu-btn">
         <span></span>

@@ -12,27 +12,29 @@ class Product {
         if (productData._id) {
             this.id = productData._id.toString()
 
-        }
+        } 
     }
     static async findById(productId) {
-        let prodId
+        let prodId;
         try {
             prodId = new mongodb.ObjectId(productId);
+            console.log(`Searching for product with id: "${prodId}"`);
         } catch (error) {
             error.code = 404;
             throw error;
         }
-
-        const product = await db.getDb().collection("products").findOne({ _id: prodId });
-
+    
+        const product = await db.getDb().collection('products').findOne({ _id: prodId });
+        
         if (!product) {
             const error = new Error("Could not find product with provided id");
             error.code = 404;
-            throw error;
+             throw error;
         }
-
+    
         return new Product(product);
     }
+    
 
     static async findAll() {
         const products = await db.getDb().collection("products").find().toArray()
@@ -75,5 +77,6 @@ class Product {
         const productId = new mongodb.ObjectId(this.id)
        return db.getDb().collection("products").deleteOne({_id:productId})
     }
+   
 }
 module.exports = Product

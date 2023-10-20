@@ -1,0 +1,87 @@
+┣ 📂config
+┃ ┗ 📜session.js
+┣ 📂controllers
+┃ ┣ 📜admin.controller.js
+┃ ┣ 📜auth.controller.js
+┃ ┣ 📜cart.controller.js
+┃ ┗ 📜product.controller.js
+┣ 📂data
+┃ ┗ 📜databse.js
+┣ 📂middlewares
+┃ ┣ 📜cart.js
+┃ ┣ 📜check-auth.js
+┃ ┣ 📜csrf-token.js
+┃ ┣ 📜error-handler.js
+┃ ┣ 📜image-upload.js
+┃ ┣ 📜protect-routes.js
+┃ ┗ 📜session-flash.js
+┣ 📂models
+┃ ┣ 📜cart.model.js
+┃ ┣ 📜product.model.js
+┃ ┗ 📜user.model.js
+┣ 📂product-data
+┃ ┗ 📂images
+┃   ┣ 📜2057ad2f-2216-4781-9705-804ebb33f927-whatsapp.png
+┃   ┣ 📜37a46544-d473-4882-a21d-915b870c4d08-instagram-logo.png
+┃   ┣ 📜5e6eaf92-1b14-4513-8f05-ccf2475d89f9-instagram-logo.png
+┃   ┣ 📜60518350-abba-4395-9efa-d4cd1665af0e-logo-spotify-icon-4096.png
+┃   ┣ 📜ac903321-2a42-4408-a770-b292d927f663-instagram-logo.png
+┃   ┣ 📜d1255280-9453-453b-b2e5-20b9de115f96-logo-spotify-icon-4096.png
+┃   ┗ 📜e5283630-7b76-48be-aaf2-99d5ee3da8a5-instagram-logo.png
+┣ 📂public
+┃ ┣ 📂scripts
+┃ ┃ ┣ 📜image-preview.js
+┃ ┃ ┣ 📜mobile.js
+┃ ┃ ┗ 📜product-management.js
+┃ ┗ 📂styles
+┃   ┣ 📜auth.css
+┃   ┣ 📜base.css
+┃   ┣ 📜error.css
+┃   ┣ 📜forms.css
+┃   ┣ 📜navigation.css
+┃   ┗ 📜products.css
+┣ 📂routes
+┃ ┣ 📜admin.routes.js
+┃ ┣ 📜auth.routes.js
+┃ ┣ 📜base.routes.js
+┃ ┣ 📜cart.routes.js
+┃ ┗ 📜products.routes.js
+┣ 📂util
+┃ ┣ 📜authentication.js
+┃ ┗ 📜validation.js
+┣ 📂views
+┃ ┣ 📂admin
+┃ ┃ ┣ 📂products
+┃ ┃ ┃ ┣ 📂includes
+┃ ┃ ┃ ┃ ┗ 📜product-form.ejs
+┃ ┃ ┃ ┣ 📜all-products.ejs
+┃ ┃ ┃ ┣ 📜new-products.ejs
+┃ ┃ ┃ ┗ 📜update-product.ejs
+┃ ┃ ┣ 📜allproducts.ejs
+┃ ┃ ┗ 📜new-products.ejs
+┃ ┣ 📂customer
+┃ ┃ ┣ 📂auth
+┃ ┃ ┃ ┣ 📜login.ejs
+┃ ┃ ┃ ┗ 📜signup.ejs
+┃ ┃ ┣ 📂cart
+┃ ┃ ┃ ┣ 📂includes
+┃ ┃ ┃ ┃ ┗ 📜cart-item.ejs
+┃ ┃ ┃ ┗ 📜cart.ejs
+┃ ┃ ┗ 📂products
+┃ ┃   ┣ 📜all-products.ejs
+┃ ┃   ┣ 📜product-details.ejs
+┃ ┃   ┗ 📜products.css
+┃ ┗ 📂shared
+┃   ┣ 📂includes
+┃   ┃ ┣ 📜footer.ejs
+┃   ┃ ┣ 📜head.ejs
+┃   ┃ ┣ 📜header.ejs
+┃   ┃ ┗ 📜nav-items.ejs
+┃   ┣ 📜401.ejs
+┃   ┣ 📜403.ejs
+┃   ┣ 📜404.ejs
+┃   ┣ 📜500.ejs
+┃   ┣ 📜base.css
+┃   ┗ 📜product-item.ejs
+┣ 📜app.js
+┗ 📜package.json

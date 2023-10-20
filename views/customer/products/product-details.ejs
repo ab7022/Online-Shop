@@ -2,6 +2,8 @@
 <!-- <link rel="stylesheet" href="/styles/forms.css">
 <link rel="stylesheet" href="/styles/auth.css">  -->
 <!-- <link rel="stylesheet" href="/styles/products.css"> -->
+<script src="/scripts/mobile.js" defer></script>
+<script src="/scripts/product-management.js" defer></script>
 <link rel="stylesheet" href="/styles/navigation.css"> 
 
 </head>
@@ -13,9 +15,14 @@
         <div id="product-info">
 <h1><%= product.title %></h1>
 <p>$<%= product.price %></p>
-<button>ADD TO CART</button>    
-    </div>
+
+<button class="btn" data-productid="<%= product.id %>">ADD TO CART</button>
+
+
+
+    </div>  
     </header>
     <p id="product-description"><%= product.description %></p>
 </main>
 <%- include("../../shared/includes/footer") %> 
+  

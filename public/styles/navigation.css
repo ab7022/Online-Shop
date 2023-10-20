@@ -123,3 +123,19 @@ main{
         background-color: var(--color-primary-500-bg);
     }
 }
+.badge {
+    /* background-color: var(--color-primary-500);    
+    border-radius: 100%;
+    width: 15px;
+    text-align: center;
+    color: azure; */
+    display: inline-block;
+    min-width: 16px; /* pixel unit */
+    /* padding: 35px 50px; pixel unit */
+    padding: 2px 5px;
+    border-radius: 50%;
+    font-size: 13px;
+    text-align: center;
+    color: azure;
+    background-color: var(--color-primary-500); 
+    }
