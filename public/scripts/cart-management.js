@@ -9,13 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
         addCartButtonElement.addEventListener("click", async () => {
             console.log("Button Clicked");
 
-            // Retrieve the productid attribute using dataset
             const prodId = addCartButtonElement.dataset.productid;
             console.log("Product ID:", prodId);
 
-            // Log the URL being used in the fetch request
             const url = `/cart/items/${prodId}`;
-            console.log("Fetch URL:", url);
 
             try {
                 const response = await fetch(url, {
@@ -28,8 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (response.ok) {
                     const responseData = await response.json();
-                    const newTotalQuantity = responseData.newTotalItems;
-                    updateCartBadge(newTotalQuantity);
+                    updateCartBadge(responseData.newTotalItems);
                 } else {
                     alert("Something Very Wrong");
                 }

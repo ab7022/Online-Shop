@@ -1,4 +1,5 @@
 const express = require("express");
+const app = express();
 const expressSession = require("express-session");
 const path = require("path");
 const authRoutes = require("./routes/auth.routes");
@@ -8,7 +9,7 @@ const addCSRFToken = require("./middlewares/csrf-token");
 
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
-const app = express();
+
 const productsRoutes = require("./routes/products.routes");
 const baseRoutes = require("./routes/base.routes");
 const adminRoutes = require("./routes/admin.routes");
@@ -36,10 +37,10 @@ app.use(baseRoutes);
 app.use(protectRoutesMiddleware)
 app.use("/admin", adminRoutes);
 
-
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use("/products/assets", express.static("product-data"));
-app.use(express.urlencoded({ extended: false }));
+
 
 db.connectToDatabase().then(function () {
     app.listen(3000, () => {

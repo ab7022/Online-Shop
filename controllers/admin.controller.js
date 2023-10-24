@@ -90,7 +90,7 @@ async function updateProduct(req,res,next) {
 async function deleteProduct(req, res, next) {
     let product
     const productId = req.params.id;
-    console.log("Received DELETE request for Product ID:", productId);
+    // console.log("Received DELETE request for Product ID:", productId);
     try {
         product = await Product.findById(req.params.id)
         await product.remove()

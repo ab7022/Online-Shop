@@ -2,10 +2,11 @@
 
     <div class="cart-item-info">
         <h2><%= item.product.title %></h2>
-        <p><%= item.totalPrice %> <span class="cart-product-price">(<%= item.product.totalPrice %>)</span></p>
+        <p>$<span class="cart-item-price"><%= item.totalPrice %></span> <span class="cart-product-price">($<%= item.product.price %>)</span></p>
     </div>
-    <div class="cart-item-management">
-        <input type="number" value="<%= item.totalQuantity %>" required>
+    <form class="cart-item-management" method="POST" data-productid="<%= item.product.id %>">
+
+        <input type="number" name="newQuantity" data-old-Quantity="<%= item.quantity %>" value="<%= item.quantity %>" required>
         <button class="btn btn-alt">Update</button>
-    </div>
+    </form>
 </article>
