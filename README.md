@@ -24,7 +24,14 @@ To set up the E-Commerce Website on your local machine, follow these steps:
    ```bash
    git clone https://github.com/your-username/e-commerce-website.git\
 
-  
+2. install the repositories:
+```bash
+   npm install
+```
+3. Run it
+```bash
+   npm start
+```
 ## Usage
 The E-Commerce Website provides the following features for both customers and administrators:
 
