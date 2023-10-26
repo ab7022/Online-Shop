@@ -4,7 +4,7 @@ const express = require('express');
 const csrf = require('csurf');
 const csrfProtection = csrf();
 const router = express.Router();
-// router.use(csrfProtection);
+const Order = require("../models/order.model")
 
 const Product = require("../models/product.model")
 async function getProducts(req, res,next) {
@@ -39,7 +39,7 @@ async function createNewProducts(req, res,next) {
 
 async function getUpdateProduct(req, res, next) {
     try {
-        const productId = new mongoose.Types.ObjectId(req.params.id); // Use 'new' here
+        const productId = new mongoose.Types.ObjectId(req.params.id); 
         const product = await Product.findById(productId);
         res.render("admin/products/update-product", { product: product });
     } catch (error) {
@@ -64,29 +64,6 @@ async function updateProduct(req,res,next) {
     res.redirect("/admin/products")
 }
 
-// async function deleteProduct(req, res, next) {
-//     try {
-//         const productId = req.params.id;
-
-//         // Check if productId is valid (e.g., ObjectId)
-//         if (!mongoose.Types.ObjectId.isValid(productId)) {
-//             return res.status(400).json({ message: "Invalid Product ID" });
-//         }
-
-//         // Find and delete the product by its ID
-//         const deletedProduct = await Product.findByIdAndDelete(productId);
-
-//         if (!deletedProduct) {
-//             return res.status(404).json({ message: "Product not found" });
-//         }
-
-//         res.json({ message: "Product deleted successfully" });
-//     } catch (error) {
-//         console.error("Error deleting product:", error);
-//         res.status(500).json({ message: "Internal server error" });
-//     }
-// };
-
 async function deleteProduct(req, res, next) {
     let product
     const productId = req.params.id;
@@ -99,8 +76,38 @@ async function deleteProduct(req, res, next) {
     }
     res.json({message:"Deleted Product"})
 };
-// Frontend JavaScript
 
+async function getOrders(req,res,next) {
+    try {
+        const orders = await Order.findAll()
+        res.render("admin/orders/admin-orders",
+        {
+            orders:orders
+        })
+    } catch (error) {
+        
+    }
+}
+
+
+async function updateOrder(req,res,next) {
+    const orderid = req.params.id
+    const newStatus = req.body.status
+    console.log("new Status is:",newStatus)
+
+    try {
+        const order = await Order.findById(orderid)
+        order.status = newStatus
+
+        await order.save()  
+        res.json({
+            message:"Order Updated",
+            newStatus:newStatus
+        })
+    } catch (error) {
+        next(error)
+    }
+}
 
 
 
@@ -117,5 +124,7 @@ module.exports = {
     createNewProducts,
     getUpdateProduct:getUpdateProduct,
     updateProduct:updateProduct,
-    deleteProduct:deleteProduct
+    deleteProduct:deleteProduct,
+    getOrders:getOrders,
+    updateOrder:updateOrder
 };

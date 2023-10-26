@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const cartBadgeElement = document.querySelector(".nav-item .badge");
+    const cartBadgeElements = document.querySelectorAll(".nav-item .badge");
 
     function updateCartBadge(newTotalQuantity) {
-        cartBadgeElement.textContent = newTotalQuantity;
+        for (const cartBadgeElement of cartBadgeElements) {
+                    cartBadgeElement.textContent = newTotalQuantity;
+        }
     }
 
     document.querySelectorAll(".btn[data-productid]").forEach(addCartButtonElement => {

@@ -1,6 +1,9 @@
 main{
     margin-top: 6rem;
 }
+form {
+    background-color: none;
+}
 #main-header{
     position: fixed;
     width: 100%;
@@ -89,11 +92,13 @@ main{
 .nav-item button{
     cursor: pointer;
     font: inherit;
-    border: 1pc solid var(--color-primary-500);
-    background-color: transparent;
+    border: none;
+    /* border: 1pc solid var(--color-primary-500); */
+    background-color: wheat;
     padding: var(--space-2) var(--space-4);
     
 }
+
 @media (min-width:48rem) {
     #mobile-menu-btn{
         display: none;
@@ -129,12 +134,13 @@ main{
     width: 15px;
     text-align: center;
     color: azure; */
+    margin: 5px;
     display: inline-block;
     min-width: 16px; /* pixel unit */
     /* padding: 35px 50px; pixel unit */
-    padding: 2px 5px;
+    padding: 7px 15px;
     border-radius: 50%;
-    font-size: 13px;
+    font-size: 15px;
     text-align: center;
     color: azure;
     background-color: var(--color-primary-500); 

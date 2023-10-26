@@ -9,14 +9,10 @@ const createSessionConfig = require("../config/session");
 const sessionConfig = createSessionConfig();
 app.use(express.urlencoded({ extended: false }));
 app.use(expressSession(sessionConfig));
-// const csrf = require("csurf");
 
-// app.use(csrf());
-// const csrfProtection = csrf({ cookie: true });
-// app.use(csrfProtection);
 
 const User = require("../models/user.model");
-const userDetailsAreValid = require('../util/validation');
+// const userDetailsAreValid = require('../util/validation');
 
 function getSignup(req, res) {
   let sessionData = sessionFlash.getSessionData(req)
@@ -92,10 +88,6 @@ async function signup(req, res, next) {
     next(error)
     return
   }
-
-  // if (csrfToken !== req.body._csrf) {
-  //   return res.status(403).send('Invalid CSRF token');
-  // }
 
   console.log(user)
   res.redirect("/login")

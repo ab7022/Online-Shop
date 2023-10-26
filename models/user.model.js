@@ -1,6 +1,7 @@
 const db = require("../data/databse")
-
+const mongodb = require("mongodb")
 const bcrypt = require("bcryptjs")
+const { mongo } = require("mongoose")
 class user{
     constructor(email,password,fullname,street,postal,city){
         this.email = email
@@ -12,6 +13,12 @@ class user{
             city:city
         }
     }
+
+    static async findbyId(userId){
+        const uid = new mongodb.ObjectId(userId)
+        return db.getDb().collection("users").findOne({_id:uid},{projection:{password:0}})
+    }
+
     getUserWithSameEmail(){
     return db.getDb().collection("users").findOne({email:this.email})
     }

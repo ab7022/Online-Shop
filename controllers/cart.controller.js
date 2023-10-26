@@ -45,7 +45,7 @@
         console.log("new quantity is:",newQuantity)
         console.log("product id is:",productid)
         const cart = res.locals.cart;
-        const updatedItemData = cart.updateItem(productid, newQuantity);
+        const updatedItemData = cart.updateItem(productid, +newQuantity);
         console.log("updated item data is:",updatedItemData)
      
         req.session.cart = cart;

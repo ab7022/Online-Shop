@@ -11,5 +11,5 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 module.exports = {
-    imageUploadMiddleware: upload.single("image") // Changed the property name
+    imageUploadMiddleware: upload.single("image")
 };
