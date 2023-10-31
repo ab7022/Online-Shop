@@ -129,15 +129,9 @@ form {
     }
 }
 .badge {
-    /* background-color: var(--color-primary-500);    
-    border-radius: 100%;
-    width: 15px;
-    text-align: center;
-    color: azure; */
     margin: 5px;
     display: inline-block;
-    min-width: 16px; /* pixel unit */
-    /* padding: 35px 50px; pixel unit */
+    min-width: 16px; 
     padding: 7px 15px;
     border-radius: 50%;
     font-size: 15px;

@@ -10,9 +10,9 @@ const notFoundMiddleware = require("./middlewares/not-found");
 
 const updateCartPricesMiddleware = require("./middlewares/update-cart-prices");
 const addCSRFToken = require("./middlewares/csrf-token");
-
-// const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
+
+
 
 const productsRoutes = require("./routes/products.routes");
 const baseRoutes = require("./routes/base.routes");
@@ -44,11 +44,16 @@ app.use(authRoutes);
 app.use(productsRoutes);
 app.use(baseRoutes);
 app.use(notFoundMiddleware)
+    
 
+let port = 3000
+if(process.nextTick.PORT){
+    port = process.env.PORT
+}
 
 
 db.connectToDatabase().then(function () {
-    app.listen(3000, () => {
+    app.listen(port, () => {
         console.log('Server started on port 3000');
     });
 }).catch(function (error) {
