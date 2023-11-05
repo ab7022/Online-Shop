@@ -1,12 +1,19 @@
-<article class="cart-item">
+<!-- <article class="cart-item">
 
     <div class="cart-item-info">
         <h2><%= item.product.title %></h2>
         <p>$<span class="cart-item-price"><%= item.totalPrice %></span> <span class="cart-product-price">($<%= item.product.price %>)</span></p>
     </div>
-    <form class="cart-item-management" method="POST" data-productid="<%= item.product.id %>">
+    <form action="/" class="cart-item-management" method="POST" data-productid="<%= item.product.id %>">
 
         <input type="number" name="newQuantity" data-old-Quantity="<%= item.quantity %>" value="<%= item.quantity %>" required>
         <button class="btn btn-alt">Update</button>
     </form>
-</article>
+</article> -->
+<div class="product-info">
+<img class="product-image" src="https://i.postimg.cc/zDKHfTdH/product-2.jpg" alt="" srcsetp>
+<p class="product-name"><%= item.product.title %> </p>
+ <input type="number" name="newQuantity" min="0" data-old-Quantity="<%= item.quantity %>" value="<%= item.quantity %>" required class="product-quantity"> 
+<p class="product-price">$<%= item.product.price %></p>
+<p class="product-total">$<%= item.totalPrice.toFixed(2) %></p>
+<div class="product-info">

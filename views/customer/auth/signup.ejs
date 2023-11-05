@@ -4,17 +4,25 @@
 
 </head>
 <body>
-    <%- include("../../shared/includes/header") %>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
+    </header>    
     <main>
-    <h1>Create New Account</h1>
-    <% if(inputData.errorMessage){ %>
-        <section class="alert">
-            <h2>Invalid Input</h2>
-            <p><%= inputData.errorMessage %></p>
-        </section>
-        <% } %>
-    <form action="/signup" method="POST">   <p>
+        <div class="auth-signup">
 
+   
+        <section class="auth">
+    <form action="/signup" method="POST">   
+        <div class="auth-btn">
+
+        <h1>Create New Account</h1>
+        <% if(inputData.errorMessage){ %>
+            <section class="alert">
+                <h3>Invalid Input</h3>
+                <p><%= inputData.errorMessage %></p>
+            </section>
+            <% } %>
+        <p>
             <label for="email">Email</label>
             <input type="email" name="email" id="email" value="<%= inputData.email %>" required>
         </p>
@@ -47,6 +55,9 @@
         <p id="switch-form">
             <a href="/login">Login instead</a>
         </p>
+        </div>
     </form>    
+</div>
+</section>
     </main>
     <%- include("../../shared/includes/footer") %>

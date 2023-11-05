@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const cartBadgeElements = document.querySelectorAll(".nav-item .badge");
-
+    const cartBadgeElements = document.querySelectorAll(".nav-action-list .nav-action-badge");
     function updateCartBadge(newTotalQuantity) {
         for (const cartBadgeElement of cartBadgeElements) {
                     cartBadgeElement.textContent = newTotalQuantity;
         }
     }
 
-    document.querySelectorAll(".btn[data-productid]").forEach(addCartButtonElement => {
+    document.querySelectorAll(".span[data-productid]").forEach(addCartButtonElement => {
         addCartButtonElement.addEventListener("click", async () => {
             console.log("Button Clicked");
 

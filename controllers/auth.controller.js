@@ -33,7 +33,6 @@ function getSignup(req, res) {
 }
 
 async function signup(req, res, next) {
-  const csrfToken = req.csrfToken();
   const enteredData = {
     email: req.body.email,
     confirmEmail: req.body["confirm-email"],

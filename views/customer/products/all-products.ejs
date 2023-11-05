@@ -1,15 +1,21 @@
 <%- include("../../shared/includes/head") %> 
-<!-- <link rel="stylesheet" href="/styles/forms.css">
-<link rel="stylesheet" href="/styles/auth.css">  -->
+ <link rel="stylesheet" href="/styles/forms.css">
+<link rel="stylesheet" href="/styles/auth.css"> 
 <!-- <link rel="stylesheet" href="/styles/products.css"> -->
-<link rel="stylesheet" href="/styles/navigation.css"> 
-
+<!-- <link rel="stylesheet" href="/styles/navigation.css">  -->
+<link rel="stylesheet" href="/styles/products.css">
+<!-- <link rel="stylesheet" href="/styles/styles.css"> -->
 </head>
 <body>
-    <%- include("../../shared/includes/header") %> 
-    <main>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %> 
+
+    </header>
+    <main >
+        <!-- <div id="all-products-main">
+        </div> -->
     <h1>All Products</h1>
-    <ul id="products-grid">
+    <ul>
 
         <% for(const product of products){ %>
         <li>

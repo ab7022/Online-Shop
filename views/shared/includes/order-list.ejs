@@ -1,4 +1,5 @@
 <ol>
+    <% if(locals.isAuth || locals.isAdmin){ %>
     <% for(const order of orders){ %>
         <li>
             <%- include("order-item",{order:order}) %>
@@ -6,4 +7,7 @@
 
 
         <% } %>
+        <% }else { %>
+            <h1 style="margin-top: 200px;">Please Login First</h1>
+            <% } %>
 </ol>

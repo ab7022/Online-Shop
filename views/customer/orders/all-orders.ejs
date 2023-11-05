@@ -3,8 +3,9 @@
 
 </head>
 <body>
-    <%- include("../../shared/includes/header") %> 
-    <main>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
+    </header>    <main>
     <h1>All Orders</h1>
     <%- include("../../shared/includes/order-list",{orders:orders}) %>
 

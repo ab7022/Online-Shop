@@ -1,23 +1,116 @@
-<%
-const baseIncludesDir = "../../shared/includes/";
-%>
+<link rel="stylesheet" href="/styles/styles.css"> 
+<div class="container">
+  <div class="overlay" data-overlay></div>
 
-<header id="main-header">
-    <div id="logo"> <a href="/">WDE</a>
-    </div>
-    <nav>
-        <%- include(`${baseIncludesDir}nav-items`) %>
+  <a href="#" class="logo">
+    <img
+      src="https://drive.google.com/uc?id=1n4a2lx4Jeg3lgbGPcYvfYgQAwSBU-kr3"
+      alt="Not Loading"
+    />
+  </a>
 
-    
-    </nav>
-    <button id="mobile-menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
+  <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+    <ion-icon name="menu-outline"></ion-icon>
+  </button>
+
+  <nav class="navbar" data-navbar>
+    <button
+      class="nav-close-btn"
+      data-nav-close-btn
+      aria-label="Close Menu"
+    >
+      <ion-icon name="close-outline"></ion-icon>
     </button>
-</header>
-<aside id="mobile-menu">
-    <nav>
-        <%- include("nav-items") %>
-    </nav>
-</aside>
+
+    <a href="/" class="logo">
+      <img
+        src="./assets/images/logo.svg"
+        width="190"
+        height="50"
+        alt="Footcap logo"
+      />
+    </a>
+
+    <ul class="navbar-list">
+      <% if (locals.isAdmin) { %>
+      <li class="navbar-item">
+        <a href="/admin/products" class="navbar-link">Manage Products</a>
+      </li>
+
+      <li class="navbar-item">
+        <a href="/admin/orders" class="navbar-link">Manage Orders</a>
+      </li>
+      <% } %>
+      <% if (!locals.isAdmin) { %>
+
+      <li class="navbar-item">
+        <a href="/" class="navbar-link">Home</a>
+      </li>
+      <% } %>
+      <% if (locals.isAuth || !locals.isAuth) { %>
+
+      <li class="navbar-item">
+        <a href="#6" class="navbar-link">About</a>
+      </li>
+      <li class="navbar-item">
+        <a href="/products" class="navbar-link">Products</a>
+      </li>
+      <li class="navbar-item">
+        <a href="#6" class="navbar-link">Contact</a>
+      </li>
+      <% } %> <% if (locals.isAuth && !locals.isAdmin) { %>
+      <li class="navbar-item">
+        <a href="/orders" class="navbar-link">Orders</a>
+      </li>
+      <% } %> <% if (locals.isAuth || locals.isAdmin) { %>
+      <li class="navbar-item">
+        <form action="/logout" method="POST">
+          <button class="btn-alt">Logout</button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+
+    <ul class="nav-action-list">
+      <li>
+        <button class="nav-action-btn">
+          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+          <span class="nav-action-text">Search</span>
+        </button>
+      </li>
+      <% if (!locals.isAuth) { %>
+
+      <li>
+        <a href="/login" class="nav-action-btn">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          <a class="nav-action-text" href="/login">Login/Register</a>
+        </a>
+      </li>
+
+      <% } %>
+
+      <li>
+        <button class="nav-action-btn">
+          <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+          <span class="nav-action-text">Wishlist</span>
+          <data class="nav-action-badge" value="5" aria-hidden="true"
+            >5</data
+          >
+        </button>
+      </li>
+
+      <li>
+        <button class="nav-action-btn">
+          <a href="/cart">
+          <ion-icon name="bag-outline" aria-hidden="true"></ion-icon>
+          
+            <span class="nav-action-badge"
+              ><%= locals.cart.totalQuantity %></span
+            >
+          </a>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

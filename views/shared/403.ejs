@@ -52,8 +52,20 @@ background-color: var(--color-gray-500);
 color: var(--color-error-100);
 margin: 0;
 }
-
+p{
+    color: black;
+    text-align: center;
+    margin-bottom: 30px;
+}
+p a{
+    text-align: center;
+}
+a{
+    text-align: center;
+}
 main{
+    margin-top: 200px;
+
 width: 90%;
 max-width: 50rem;
 margin: 0 auto;
@@ -88,6 +100,9 @@ border-color: var(--color-primary-700);
     </style>
 </head>
 <body>
+    <header class="header" data-header>
+        <%- include("./includes/header") %>  
+    </header>
     <main>
         <h1>Not Authorised</h1>
         <p>Unfortunately, You Are Not Authorised</p>

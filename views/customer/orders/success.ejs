@@ -1,11 +1,15 @@
 <%- include("../../shared/includes/head") %> 
-
+<link rel="stylesheet" href="/styles/cart.css">
 </head>
-<body>
-    <%- include("../../shared/includes/header") %> 
-    <main>
-    <h1>Order was successful!</h1>
-    <p>You can visit <a href="/orders">the orders page</a> for more details</p>
 
+
+<body>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
+    </header>    <main>
+        <div style="background-color: rgb(238, 238, 238); padding: 50px; border-radius: 20px;">
+    <h1 style="margin: 15px;">Order was successful!</h1>
+    <p style="display: contents;text-align:center; margin-top: 20px;">You can visit <a href="/orders" style="display: inline;">the orders page</a> for more details</p>
+</div>
 </main>
 <%- include("../../shared/includes/footer") %> 

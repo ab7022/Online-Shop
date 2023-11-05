@@ -1,4 +1,4 @@
-h1{
+/* h1{
     text-align: center;
 }
 
@@ -34,5 +34,5 @@ input,textarea{
     padding: var(--space-2);
     border-radius: var(--border-radius-small);
     border: none;
-    width: 90%;
-}
+    width: 100%;
+} */

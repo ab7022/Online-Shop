@@ -1,49 +1,81 @@
-<article class="order-item">
+
+
+<article class="order-item glassmorphism">
+  <div class="inner-box">
+
     <header class="order-summary">
-        <h2>
-            <span class="order-item-price">
-                $<%= order.productData.totalPrice.toFixed(2) %>
-            </span> - <%= order.formattedDate %>
-        </h2>
-        <p><span class="badge">
-                <%= order.status %>
-            </span>
-        </p>
+      <div class="display">
+        <div class="order-id">
+          <p>Order ID:</p>
+          <p><%= order.id %></p>
+        </div>
+        <div class="order-date">
+          <p>Order placed on:</p>
+          <p><%= order.formattedDate%></p>
+        </div>
+        <div class="order-total">
+          <p>Total Price:</p>
+          <p class="order-price">$<%= order.productData.totalPrice.toFixed(2) %></p>
+        </div>
+        <div class="order-status">
+          <p>Status:</p>
+          <p><span class="badge <%= order.status %>"><%= order.status %></span></p>
+        </div>
+         </div> 
+      </div>
     </header>
+   
+    <div class="order-details">
+      <img
+        src="https://i.postimg.cc/yx4JPNNN/product-1.jpg"
+        alt="Running Sneaker Shoes"
+      />
+      <ul>
+        <% for(const item of order.productData.items) {%>
+            <li>
+                <b><%= item.product.title %></b><br>
+                <p> - $ <%= item.totalPrice.toFixed(2) %> ($<%=
+                            item.product.price.toFixed(2) %> x <%=item.quantity %>)
+            </p></li>
 
-    <section class="order-details">
-        <% if(locals.isAdmin){ %>
-            <address>
-                <p><a href="mailto:<%= order.userData.email %>">
-                        <%= order.userData.name %>
-                    </a></p>
-                <p>
-                    <%= order.userData.address.street %> (<%= order.userData.address.postalCode %>
-                            <%= order.userData.address.city %>)
-                </p>
-            </address>
             <% } %>
-                <ul>
-                    <% for(const item of order.productData.items) {%>
-                        <li>
-                            <%= item.product.title %> - $ <%= item.totalPrice.toFixed(2) %> ($<%=
-                                        item.product.price.toFixed(2) %> x <%=item.quantity %>)
-                        </li>
-                        <% } %>
-                </ul>
-    </section>
+            <% if (locals.isAdmin) { %>
+              <section class="order-actions">
+                <form method="POST" action="/admin/orders/<%= order.id %>" name="newStatus">
+                  <input type="hidden" name="orderid" value="<%= order.id %>">
+                  <select name="status">
+                    <option value="pending" <% if (order.status === "pending") { %>selected<% } %>>Pending</option>
+                    <option value="fulfilled" <% if (order.status === "fulfilled") { %>selected<% } %>>Fulfilled</option>
+                    <option value="cancelled" <% if (order.status === "cancelled") { %>selected<% } %>>Cancelled</option>
+                  </select>
+                  <button class="btn">Update</button>
+                </form>
+              </section>
+            <% } %>
+    </ul>
+    
+      <div class="order-detail">
+        <p class="order-name"><%= order.productData.name %></p>
+      </div>
+      <% if (order.userData) { %>
+        <div class="flex">
+          <p>Ordered By:</p>
+  <p><a href=""><%= order.userData.fullname %></a></p>
+  <p>
+    <%= order.userData.address.street %>, 
+    <p>(<%= order.userData.address.postal %>)</p> <%= order.userData.address.city %>
+  </p>
+</div>
+<% } %>
 
-    <% if(locals.isAdmin){ %>
-        <section class="order-actions">
-            <form method="POST" action="/admin/orders/<%= order.id %>" name="newStatus">
-                <input type="hidden" name="orderid" value="<%= order.id %>">
-                <select name="status">
-                    <option value="pending" <% if(order.status==="pending" ){%>selected<% }%>>Pending</option>
-                    <option value="fulfilled" <% if(order.status==="fulfilled" ){%>selected<% }%>>Fulfilled</option>
-                    <option value="cancelled" <% if(order.status==="cancelled" ){%>selected<% }%>>Cancelled</option>
-                </select>
-                <button class="btn btn-alt">Update</button>
-            </form>
-        </section>
-        <% } %>
+      
+    
+  </div>
+
+  
+  </div>
+
+ 
+ <!-- Closing div for inner-box -->
 </article>
+

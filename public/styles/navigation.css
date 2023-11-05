@@ -98,6 +98,13 @@ form {
     padding: var(--space-2) var(--space-4);
     
 }
+.navbar .logo {
+    background: var(--maximum-blue-green_10);
+    padding-block: 50px 40px;
+  }
+  
+  .navbar .logo img { margin-inline: auto; }
+  
 
 @media (min-width:48rem) {
     #mobile-menu-btn{
@@ -139,3 +146,5 @@ form {
     color: azure;
     background-color: var(--color-primary-500); 
     }
+
+    

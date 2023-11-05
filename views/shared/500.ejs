@@ -48,12 +48,15 @@ html{
 }
 
 body{
+    
     background-color: var(--color-gray-500);
     color: var(--color-error-100);
     margin: 0;
 }
 
 main{
+    margin-top: 200px;
+
     width: 90%;
     max-width: 50rem;
     margin: 0 auto;
@@ -88,6 +91,9 @@ a{
             </style>
         </head>
         <body>
+            <header class="header" data-header>
+                <%- include("./includes/header") %>  
+            </header>
             <main>
                 <h1>Something went Wrong</h1>
                 <p>Unfortunately, Something Went Wrong - Please Try Again Later</p>

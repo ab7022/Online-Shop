@@ -1,19 +1,27 @@
-<%- include("../../shared/includes/head",{pageTitle:"Login"}) %>
-<link rel="stylesheet" href="/styles/forms.css">
+ <!-- <link rel="stylesheet" href="/styles/forms.css">
 <link rel="stylesheet" href="/styles/auth.css"> 
+   -->
+   <%- include("../../shared/includes/head") %>
 
+   <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <%- include("../../shared/includes/header") %>
-    <main>
-    <h1>Login</h1>
-    <% if(inputData.errorMessage){ %>
-        <section class="alert">
-            <h2>Invalid Credentials</h2>
-            <p><%= inputData.errorMessage %></p>
-        </section>
-        <% } %>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
+    </header>
+        <main>
+        <section class="auth">
+  
     <form action="/login" method="POST">
+        <div class="auth-btn">
+
+        <h1>Login</h1>
+        <% if(inputData.errorMessage){ %>
+            <section class="alert">
+                <h2>Invalid Credentials</h2>
+                <p><%= inputData.errorMessage %></p>
+            </section>
+            <% } %> 
         <!-- <input type="hidden" name="_csrf" value=""> -->
 
         <label for="email">Email</label>
@@ -27,6 +35,8 @@
         <p id="switch-form">
             <a href="/Signup">Create A New User</a>
         </p>
-    </form>    
+    </form>   
+</div> 
+</section>
     </main>
     <%- include("../../shared/includes/footer") %>

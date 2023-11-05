@@ -1,5 +1,5 @@
 const cartItemUpdateFormElements = document.querySelectorAll(".cart-item-management");
-const cartBadgeElements = document.querySelectorAll(".nav-item .badge");
+const cartBadgeElements = document.querySelectorAll(".nav-action-list .nav-action-badge");
 const cartTotalPriceElement = document.getElementById("cart-total-price");
 const cartItemTotalPriceElements = form.parentElement.querySelector(".cart-item-price");
 

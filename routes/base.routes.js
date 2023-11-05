@@ -3,7 +3,7 @@ const router = express.Router()
 
 router.get("/",function(req,res){
 
-    res.redirect("/products")
+    res.render("shared/index")
 })
 
 router.get("/401", function (req, res) {

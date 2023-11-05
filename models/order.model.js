@@ -65,7 +65,7 @@ class Order {
                 userData: this.userData,
                 productData: this.productData,
                 date: new Date(),
-                status: this.status,
+                status: "pending",
             };
             return db.getDb().collection("orders").insertOne(orderDocument);
         }

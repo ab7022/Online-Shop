@@ -4,9 +4,10 @@
 <script src="/scripts/image-preview.js" defer></script>
 </head>
 <body>
-<%- include("../../shared/includes/header") %>
-<main>
-    <h1>Add New Products</h1>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
+    </header><main>
+    
 <%- include("includes/product-form",{submitPath:"/admin/products",product:{
     title:"",
     summary:"",

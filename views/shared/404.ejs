@@ -33,43 +33,56 @@ font-family: "Montserrat","sans-serif";
 --color-error-500:rgb(199,51,15);
 
 --color-primary-500-bg:rgb(63,60,58);
-
 --space-1:0.25rem;
 --space-2:0.50rem;
 --space-4:1rem;
 --space-6:1.5rem;
 --space-8:2rem;
-
 --border-radius-small:4px;
 --border-radius-medium:6px;
-
 --shadow-medium:0px 2px 8px rgba(0,0,0,0.2);
-
 }
 
 body{
+    margin-block-end: 1000px;
 background-color: var(--color-gray-500);
 color: var(--color-error-100);
 margin: 0;
 }
 
 main{
+    margin-top: 200px;
+
 width: 90%;
 max-width: 50rem;
 margin: 0 auto;
 }
-
+h1{
+    margin-top: 200px;
+    padding-bottom: 10px;
+    color: black;
+}
 ul,ol{
+padding: 20px;
 list-style: none;
-margin: 0;
-padding: 0;
+
 }
 
 a{
 text-decoration: none;
 color: var(--color-primary-400);
 }
-
+p{
+    color: black;
+    text-align: center;
+    margin-bottom: 30px;
+}
+p a{
+    text-align: center;
+}
+a{
+    text-align: center;
+}
 .btn{
 cursor: pointer;
 font: inherit;
@@ -81,17 +94,19 @@ border-radius: var(--border-radius-small);
 }
 .btn:hover,
 .btn:active{
-background-color: var(--color-primary-700);
 border-color: var(--color-primary-700);
 }
 
     </style>
 </head>
 <body>
+    <header class="header" data-header>
+        <%- include("./includes/header") %>  
+    </header>
     <main>
         <h1>Couldn't find resource</h1>
         <p>Unfortunately, We Couldn't find the requested resource!</p>
-        <p><a href="/" class="btn">Back To Safety!</a></p>
+        <a href="/" class="btn">Back To Safety!</a>
     </main>
 </body>
 </html>

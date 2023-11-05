@@ -1,13 +1,14 @@
 <ul class="nav-item">
+     
+    <li class="navbar-item">
+        <a href="#" class="navbar-link">Home</a>
+      </li>
+  
     <% if (locals.isAdmin) { %>
         <li><a href="/admin/products">Manage Products</a></li>
         <li><a href="/admin/orders">Manage Orders</a></li>
     <% } %>
-    <% if (!locals.isAdmin) { %>
-        <li><a href="/">Shop</a></li>
-        <%- console.log("Cart:", locals.cart) %>
-        <li><a href="/cart">Cart <span class="badge"><%= locals.cart.totalQuantity %></span> </a></li>
-         <% } %>
+ 
 
     <% if (locals.isAuth && !locals.isAdmin) { %>
         <li><a href="/orders">Orders</a></li>
@@ -17,13 +18,24 @@
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Signup</a></li>
         <% } %>
-
-    <% if (locals.isAuth) { %>
+        
+    <!-- <% if (locals.isAuth) { %>
         <li>
             <form action="/logout" method="POST">
                 <button class="btn btn-alt">Logout</button>
             </form>
         </li>
-    <% } %>
+    <% } %> -->
+    
 
-</ul>
+   
+    <li class="navbar-item">
+      <a href="#" class="navbar-link">Products</a>
+    </li>
+ 
+    <% if (!locals.isAdmin) { %>
+        <li><a href="/">Shop</a></li>
+        <%- console.log("Cart:", locals.cart) %>
+        <li><a href="/cart">Cart <span class="badge"><%= locals.cart.totalQuantity %></span> </a></li>
+         <% } %>
+  </ul>

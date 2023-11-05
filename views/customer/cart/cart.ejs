@@ -1,33 +1,104 @@
-<%- include("../../shared/includes/head") %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/styles/cart.css" />
+    <!-- <link rel="stylesheet" href="/styles/styles.css"> -->
+    <%- include("../../shared/includes/head") %>
+  </head>
+  <body>
+    <header class="header" data-header>
+      <%- include("../../shared/includes/header") %>
+    </header>
 
-    <link rel="stylesheet" href="/styles/cart.css">
-    <script src="/scripts/cart-item-management.js" defer></script>
-    </head>
+    <div class="cart-container">
+      <!-- <div class="cart-container2"> -->
 
-    <body>
-        <%- include("../../shared/includes/header") %>
-            <main>
-                <h1>Your Cart</h1>
-                <ul id="cart-items">
-                    <% for(const cartItem of locals.cart.items){ %>
-                        <li>
-                            <%- include("includes/cart-item",{item:cartItem}) %>
-                        </li>
-                        <% } %>
-                </ul>
-                <div id="cart-total">
-                    <p>Total: $<span id="cart-total-price">
-                            <%= locals.cart.totalPrice %>
-                        </span></p>
-                    <% if(locals.isAuth && locals.cart.totalQuantity>0){ %>
-                        <form action="/orders" method="POST">
-                            <button class="btn">Buy Products</button>
-                        </form>
-                        <% } else {%>
-                            <p id="cart-total-fallback">Log in and add items in the cart to proceed and purchase the items.</p>
-                            <% } %>
-                </div>
+      <div class="product-details">
+        <h2>Shopping Cart</h2>
+        <% if(locals.cart.totalQuantity<=0){ %>
+        <div class="empty-cart">
+          <h1>Your Cart is Empty</h1>
+          <a href="/">Buy Now</a>
+        </div>
+        <% } else{%>
+        <div class="product-heading">
+          <h3>Product Details</h3>
+          <h4>Quantity</h4>
+          <h4>Price</h4>
+          <h4>Total Price</h4>
+        </div>
 
+        <div class="product">
+          <!-- <img class="product-image" src="https://i.postimg.cc/zDKHfTdH/product-2.jpg" alt="" srcsetp>
+                    <p class="product-name">Product Name 2 </p>
+                    <input type="number" name="" id="" min="0" value="2"class="product-quantity">
+                    <p class="product-price">$15.00</p>
+                    <p class="product-total">$30.00</p> -->
+          <ul id="cart-items">
+            <% for(const cartItem of locals.cart.items){ %>
+            <li><%- include("includes/cart-item",{item:cartItem}) %></li>
+            <% } %>
+          </ul>
+        </div>
+        <div class="total-products">
+          <h3>Want to add some more products?</h3>
+          <a href="/">Buy Now</a>
+        </div>
+        <% } %>
+      </div>
+      <!-- </div> -->
+      <div class="payment-options">
+        <h2>Order Summary</h2>
+        <div class="shipping-options">
+          <label for="shipping-method">SHIPPING:</label>
+          <select id="shipping-method">
+            <option value="express">Express Shipping</option>
+            <option value="normal">Normal Shipping</option>
+          </select>
+        </div>
+        <div class="promo-code">
+          <h4 class="shipping-method">PROMO CODE:</h4>
+          <div class="promo-flex">
+            <input type="text" placeholder="Enter Promo Code" />
+            <button>Apply</button>
+          </div>
+        </div>
 
-            </main>
-            <%- include("../../shared/includes/footer") %>
+        <div class="checkout-details">
+          <div class="total-products">
+            <p>Total Products:</p>
+            <p><%= locals.cart.totalQuantity %></p>
+          </div>
+          <div class="total-products">
+            <p>Total Price</p>
+            <p>$<%= locals.cart.totalPrice.toFixed(2) %></p>
+          </div>
+          <div class="total-products">
+            <p>Discount</p>
+            <p>$00.00</p>
+          </div>
+          <div class="total-products">
+            <p>Delivery Charge:</p>
+            <p>$00.00</p>
+          </div>
+
+          <div class="checkout-price">
+            <p>Checkout Price:</p>
+            <p>$<%= locals.cart.totalPrice.toFixed(2) %></p>
+          </div>
+
+          <% if(locals.isAuth){ %>
+          <form action="/orders" method="POST">
+            <button class="checkout-button">Checkout</button>
+          </form>
+          <% } else { %>
+          <a href="/login">Login</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

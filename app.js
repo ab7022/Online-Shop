@@ -22,14 +22,12 @@ const protectRoutesMiddleware = require("./middlewares/protect-routes")
 const cartMiddleware = require("./middlewares/cart")
 const createSessionConfig = require("./config/session");
 const sessionConfig = createSessionConfig();
-
 app.use(cookieParser()); 
-
 app.use(expressSession(sessionConfig));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use("/products/assets", express.static("product-data"));
-
+app.use(express.static("views/customer/shared/assets/images/"));
 app.use(cartMiddleware.initializeCart);
 app.use(updateCartPricesMiddleware)
 app.use(checkAuthStatusMiddleware);
@@ -39,7 +37,6 @@ app.set("views/admin", path.join(__dirname, "views/admin"));
 app.use("/orders",protectRoutesMiddleware, ordersRoutes);
 app.use("/admin", protectRoutesMiddleware,adminRoutes);
 app.use("/cart",cartRoutes);
-
 app.use(authRoutes);
 app.use(productsRoutes);
 app.use(baseRoutes);

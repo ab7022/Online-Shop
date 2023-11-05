@@ -3,7 +3,10 @@
 <script src="/scripts/order-management.js" defer></script>
 </head>
 <body>
-    <%- include("../../shared/includes/header") %>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
+    </header>
+ 
     <main>
         <%- include("../../shared/includes/order-list",{orders:orders}) %>
     </main>

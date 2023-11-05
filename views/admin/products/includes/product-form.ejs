@@ -1,4 +1,11 @@
+<section class="auth">
 <form action="<%= submitPath %>" method="POST" enctype="multipart/form-data">
+    <% if(product.id){ %>
+    <h1>Update Product</h1>
+        <% }else{ %>
+            <h1>Add New Product</h1>
+
+            <% } %>
     <p>
         <label for="title">Title</label>
         <input type="text" name="title" id="title" value="<%= product.title %>" required>
@@ -7,12 +14,14 @@
     <div id="image-upload-control">
         <label for="image">Image</label>
         <input type="file" name="image" id="image" accept="image/png, image/jpg" <%=imageRequired ? 'required' : '' %>>
-        <img src="" alt="Selected Image">
+        <img src="" alt="">
     </div>
     </p>
     <p>
         <label for="summary">Summary</label>
         <input type="text" name="summary" id="summary" maxlength="250" value="<%= product.summary %>">
+        <label for="category">Category</label>
+        <input type="text" name="category" id="category" maxlength="50" value="<%= product.category %>">
     </p>
     <p>
         <label for="price">Price</label>
@@ -23,7 +32,10 @@
         <textarea name="description" id="description" rows="7" required><%= product.description %></textarea>
     </p>
     <p>
+        <div class="action-btn">
         <button type="reset" class="btn btn-alt">Reset</button>
         <button class="btn">Save</button>
+    </div>
     </p>
 </form>
+</section>

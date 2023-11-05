@@ -1,11 +1,15 @@
 <%- include("../../shared/includes/head") %>
-<!-- <link rel="stylesheet" href="/styles/products.css"> -->
+<link rel="stylesheet" href="/styles/products.css">
 <!-- <link rel="stylesheet" href="/styles/forms.css">
 <link rel="stylesheet" href="/styles/auth.css"> -->
+ <link rel="stylesheet" href="/styles/styles.css">
+
 <script src="/scripts/product-management.js" defer></script>
 </head>
 <body>
-<%- include("../../shared/includes/header") %>
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
+    </header>
 <main>
     <h1>Product Administration</h1>
     <section>
@@ -13,7 +17,7 @@
         <a class="btn" href="/admin/products/new">Add Products</a>
     </section>
     <section>
-        <ul id="products-grid">
+        <ul id="product-list">
             <% for(const product of products){ %>
                 <li>
                     <%- include("../../shared/product-item",{product:product}) %>

@@ -1,28 +1,87 @@
 <%- include("../../shared/includes/head") %> 
-<!-- <link rel="stylesheet" href="/styles/forms.css">
-<link rel="stylesheet" href="/styles/auth.css">  -->
-<!-- <link rel="stylesheet" href="/styles/products.css"> -->
+<link rel="stylesheet" href="/styles/styles2.css">
 <script src="/scripts/mobile.js" defer></script>
 <script src="/scripts/product-management.js" defer></script>
-<link rel="stylesheet" href="/styles/navigation.css"> 
-
 </head>
 <body>
-    <%- include("../../shared/includes/header") %> 
-    <main id="product-details">
-    <header>
-        <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
-        <div id="product-info">
-<h1><%= product.title %></h1>
-<p>$<%= product.price %></p>
-
-<button class="btn" data-productid="<%= product.id %>">ADD TO CART</button>
-
-
-
-    </div>  
+    <header class="header" data-header>
+        <%- include("../../shared/includes/header") %>  
     </header>
-    <p id="product-description"><%= product.description %></p>
-</main>
+    <main>
+        <article>
+    
+          <section class="section product" aria-label="product">
+            <div class="container">
+                    <img src="<%= product.imageUrl %>" width="400" height="400" loading="lazy" alt="Nike Sneaker"
+                      >    
+              <div class="product-content">
+    
+                <p class="product-subtitle">Nike Company</p>
+    
+                <h1 class="h1 product-title">Fall Limited Edition Sneakers</h1>
+    
+                <p class="product-text">
+                  These low-profile sneakers are your perfect casual wear companion. Featuring a
+                  durable rubber outer sole, they’ll withstand everything the weather can offer.
+                </p>
+    
+                <div class="wrapper">
+    
+                  <span class="price" data-total-price>$125.00</span>
+    
+                  <span class="badge">50%</span>
+    
+                  <del class="del">$250.00</del>
+    
+                </div>
+    
+                <div class="btn-group">
+    
+                  <div class="counter-wrapper">
+    
+                    <button class="counter-btn" data-qty-minus>
+                      <ion-icon name="remove-outline"></ion-icon>
+                    </button>
+    
+                    <span class="span" data-qty>1</span>
+    
+                    <button class="counter-btn" data-qty-plus>
+                      <ion-icon name="add-outline"></ion-icon>
+                    </button>
+    
+                  </div>
+    
+                  <button class="cart-btn">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+    
+                    <span class="span" data-productid="<%= product.id %>">Add to cart</span>
+                  </button>
+    
+                </div>
+    
+              </div>
+    
+            </div>
+          </section>
+    
+        </article>
+      </main>
+      
+      
+      
+        <!-- 
+          - custom js link
+        -->
+        <script src="./assets/js/script.js"></script>
+      
+        <!-- 
+          - ionicon link
+        -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      
+    </main>
+    
+    
 <%- include("../../shared/includes/footer") %> 
   
