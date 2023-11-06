@@ -1,10 +1,4 @@
-'use strict';
-
-
-
-/**
- * navbar toggle
- */
+"use strict";
 
 const overlay = document.querySelector("[data-overlay]");
 const navOpenBtn = document.querySelector("[data-nav-open-btn]");
@@ -19,12 +13,6 @@ for (let i = 0; i < navElems.length; i++) {
   });
 }
 
-
-
-/**
- * header & go top btn active on page scroll
- */
-
 const header = document.querySelector("[data-header]");
 const goTopBtn = document.querySelector("[data-go-top]");
 
@@ -38,13 +26,7 @@ window.addEventListener("scroll", function () {
   }
 });
 
-'use strict';
-
-
-
-/**
- * add event on element
- */
+("use strict");
 
 const addEventOnElem = function (elem, type, callback) {
   if (elem.length > 1) {
@@ -54,66 +36,43 @@ const addEventOnElem = function (elem, type, callback) {
   } else {
     elem.addEventListener(type, callback);
   }
-}
-
-
-
-/**
- * navbar toggle
- */
+};
 
 const navToggler = document.querySelectorAll("[data-nav-toggler]");
 
 const toggleNav = function () {
   navbar.classList.toggle("active");
   overlay.classList.toggle("active");
-}
+};
 
 addEventOnElem(navToggler, "click", toggleNav);
-
-
-
-/**
- * slider funtionality
- */
 
 const slider = document.querySelector("[data-slider]");
 const nextBtn = document.querySelector("[data-next]");
 const prevBtn = document.querySelector("[data-prev]");
 
-// set the slider default position
 let sliderPos = 0;
 
-// set the number of total slider items
 const totalSliderItems = 4;
 
-// make next slide btn workable
 const slideToNext = function () {
-
   sliderPos++;
   slider.style.transform = `translateX(-${sliderPos}00%)`;
 
   sliderEnd();
-
-}
+};
 
 addEventOnElem(nextBtn, "click", slideToNext);
 
-// make prev slide btn workable
 const slideToPrev = function () {
-
   sliderPos--;
   slider.style.transform = `translateX(-${sliderPos}00%)`;
 
   sliderEnd();
-
-}
+};
 
 addEventOnElem(prevBtn, "click", slideToPrev);
 
-
-
-// check when slider is end then what should slider btn do
 function sliderEnd() {
   if (sliderPos >= totalSliderItems - 1) {
     nextBtn.classList.add("disabled");
@@ -130,24 +89,15 @@ function sliderEnd() {
 
 sliderEnd();
 
-
-
-/**
- * product quantity functionality
- */
-
 const totalPriceElem = document.querySelector("[data-total-price]");
 const qtyElem = document.querySelector("[data-qty]");
 const qtyMinusBtn = document.querySelector("[data-qty-minus]");
 const qtyPlusBtn = document.querySelector("[data-qty-plus]");
 
-// set the product default quantity
 let qty = 1;
 
-// set the product default price
 let productPrice = 125;
 
-// set the initial total price
 let totalPrice = 125;
 
 const increaseProductQty = function () {
@@ -156,7 +106,7 @@ const increaseProductQty = function () {
 
   qtyElem.textContent = qty;
   totalPriceElem.textContent = `$${totalPrice}.00`;
-}
+};
 
 addEventOnElem(qtyPlusBtn, "click", increaseProductQty);
 
@@ -166,6 +116,6 @@ const decreaseProductQty = function () {
 
   qtyElem.textContent = qty;
   totalPriceElem.textContent = `$${totalPrice}.00`;
-}
+};
 
 addEventOnElem(qtyMinusBtn, "click", decreaseProductQty);

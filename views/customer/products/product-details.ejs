@@ -9,42 +9,27 @@
     </header>
     <main>
         <article>
-    
           <section class="section product" aria-label="product">
             <div class="container">
                     <img src="<%= product.imageUrl %>" width="400" height="400" loading="lazy" alt="Nike Sneaker"
                       >    
               <div class="product-content">
-    
-                <p class="product-subtitle">Nike Company</p>
-    
-                <h1 class="h1 product-title">Fall Limited Edition Sneakers</h1>
-    
+                <p class="product-subtitle"><%= product.company %> Company</p>
+                <h1 class="h1 product-title"><%= product.title %></h1>
                 <p class="product-text">
-                  These low-profile sneakers are your perfect casual wear companion. Featuring a
-                  durable rubber outer sole, they’ll withstand everything the weather can offer.
+                <%= product.description %>
                 </p>
-    
                 <div class="wrapper">
-    
-                  <span class="price" data-total-price>$125.00</span>
-    
+                  <span class="price" data-total-price>$ <%= product.price %></span>
                   <span class="badge">50%</span>
-    
-                  <del class="del">$250.00</del>
-    
+                  <del class="del">$  <%= product.oldprice %></del>
                 </div>
-    
-                <div class="btn-group">
-    
-                  <div class="counter-wrapper">
-    
+                   <div class="btn-group">
+                  <div class="counter-wrapper">  
                     <button class="counter-btn" data-qty-minus>
                       <ion-icon name="remove-outline"></ion-icon>
                     </button>
-    
                     <span class="span" data-qty>1</span>
-    
                     <button class="counter-btn" data-qty-plus>
                       <ion-icon name="add-outline"></ion-icon>
                     </button>
@@ -56,32 +41,16 @@
     
                     <span class="span" data-productid="<%= product.id %>">Add to cart</span>
                   </button>
-    
                 </div>
-    
               </div>
-    
             </div>
           </section>
-    
         </article>
       </main>
-      
-      
-      
-        <!-- 
-          - custom js link
-        -->
         <script src="./assets/js/script.js"></script>
-      
-        <!-- 
-          - ionicon link
-        -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
       
     </main>
-    
-    
 <%- include("../../shared/includes/footer") %> 
   

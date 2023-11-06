@@ -1,14 +1,18 @@
-<section class="auth">
+<section class="add">
 <form action="<%= submitPath %>" method="POST" enctype="multipart/form-data">
     <% if(product.id){ %>
     <h1>Update Product</h1>
         <% }else{ %>
             <h1>Add New Product</h1>
-
             <% } %>
+        </div>
     <p>
-        <label for="title">Title</label>
+        <label for="company">Company</label>
+        <input type="text" name="company" id="company" maxlength="15" value="<%= product.company %>">
+        <label for="title">Product Name</label>
         <input type="text" name="title" id="title" value="<%= product.title %>" required>
+        <label for="category">Category</label>
+        <input type="text" name="category" id="category" maxlength="50" value="<%= product.category %>">
     </p>
     <p>
     <div id="image-upload-control">
@@ -18,16 +22,18 @@
     </div>
     </p>
     <p>
-        <label for="summary">Summary</label>
-        <input type="text" name="summary" id="summary" maxlength="250" value="<%= product.summary %>">
-        <label for="category">Category</label>
-        <input type="text" name="category" id="category" maxlength="50" value="<%= product.category %>">
+        <label for="oldprice">Old Price</label>
+        <input type="text" name="oldprice" id="oldprice" min="0.01" step="0.1" value="<%= product.oldprice %>">
     </p>
     <p>
         <label for="price">Price</label>
         <input type="text" name="price" id="price" min="0.1" step="0.1" value="<%= product.price %>">
+        
     </p>
     <p>
+          
+        <label for="summary">Summary</label>
+        <input type="text" name="summary" id="summary" maxlength="250" value="<%= product.summary %>">
         <label for="description">Description</label>
         <textarea name="description" id="description" rows="7" required><%= product.description %></textarea>
     </p>

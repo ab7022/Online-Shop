@@ -1,5 +1,5 @@
-function notFoundhandler(req,res) {
-    res.render("shared/404")
+function notFoundhandler(req, res) {
+  res.render("shared/404");
 }
 
-module.exports = notFoundhandler
+module.exports = notFoundhandler;
