@@ -7,8 +7,13 @@ if (process.env.MONGODB_URL) {
   mongodbUrl = process.env.MONGODB_URL;
 }
 async function connectToDatabase() {
-  const client = await MongoClient.connect(mongodbUrl);
-  database = client.db("online-shop");
+  try {
+    const client = await MongoClient.connect(mongodbUrl);
+    database = client.db("online-shop");
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+    throw error; // You may choose to handle this error differently
+  }
 }
 function getDb() {
   if (!database) {
