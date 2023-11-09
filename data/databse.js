@@ -81,7 +81,7 @@ module.exports = {
   connectToDatabase,
   getDb,
 };
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Assuming `app` and `PORT` are defined elsewhere in your code
 const startServer = () => {
