@@ -40,7 +40,7 @@ app.use(productsRoutes);
 app.use(baseRoutes);
 app.use(notFoundMiddleware);
 
-let port = 3000 || process.env.PORT
+let port =  process.env.PORT || 3000
 mongoose.set("strictQuery",false)
 db.connectToDatabase()
   .then(function () {

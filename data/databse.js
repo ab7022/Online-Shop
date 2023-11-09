@@ -2,7 +2,9 @@ const mongodb = require("mongodb");
 const { default: mongoose } = require("mongoose");
 const MongoClient = mongodb.MongoClient;
 let database; 
-let mongodbUrl = "mongodb://localhost:27017";
+let mongodbUrl = "mongodb+srv://abdul:Y59ILJDZ9UwqgAVJ@cluster0.argigth.mongodb.net/online-shop";
+
+
 
 if (process.env.MONGODB_URL) {
   mongodbUrl = process.env.MONGODB_URL;
@@ -13,7 +15,7 @@ async function connectToDatabase() {
     database = client.db("online-shop");
   } catch (error) {
     console.error("Error connecting to the database:", error);
-    throw error; // You may choose to handle this error differently
+    throw error; 
   }
 }
 function getDb() {

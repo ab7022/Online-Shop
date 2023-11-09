@@ -127,7 +127,7 @@ async function login(req, res) {
         password: user.password,
       },
       function () {
-        res.redirect(`/login?csrfToken=${csrfToken}`);
+        res.redirect(`/login`);
       }
     );
     return;
