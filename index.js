@@ -40,28 +40,27 @@ app.use(productsRoutes);
 app.use(baseRoutes);
 app.use(notFoundMiddleware);
 
-// let port = 3000 || process.env.PORT
-// mongoose.set("strictQuery",false)
-// db.connectToDatabase()
-//   .then(function () {
-//     app.listen(port, () => {
-//       console.log("Server started on port 3000");
-//     });
-//   })
-//   .catch(function (error) {
-//     console.log("Failed to connect to Database");
-//     console.log(error);
-//   });
+let port = 3000 || process.env.PORT
+mongoose.set("strictQuery",false)
+db.connectToDatabase()
+  .then(function () {
+    app.listen(port, () => {
+      console.log("Server started on port 3000");
+    });
+  })
+  .catch(function (error) {
+    console.log("Failed to connect to Database");
+    console.log(error);
+  });
 
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
 
-// Require the database module
-const { connectToDatabase, getDb } = require('./data/databse');
+// // Require the database module
+// const { connectToDatabase, getDb } = require('./data/databse');
 
-// Call the connectToDatabase function
-connectToDatabase();
+// // Call the connectToDatabase function
+// connectToDatabase();
 
-
-app.listen(PORT, () => {
-  console.log(`Server listening on PORT ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server listening on PORT ${PORT}`);
+// });
