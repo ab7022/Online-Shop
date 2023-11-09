@@ -7,7 +7,7 @@ const ordersRoutes = require("./routes/orders.routes");
 const db = require("./data/databse");
 const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const notFoundMiddleware = require("./middlewares/not-found");
-
+const mongoose = require("mongoose")
 const updateCartPricesMiddleware = require("./middlewares/update-cart-prices");
 const addCSRFToken = require("./middlewares/csrf-token");
 const cookieParser = require("cookie-parser");
@@ -40,18 +40,28 @@ app.use(productsRoutes);
 app.use(baseRoutes);
 app.use(notFoundMiddleware);
 
-let port = 3000;
-if (process.nextTick.PORT) {
-  port = process.env.PORT;
-}
+// let port = 3000 || process.env.PORT
+// mongoose.set("strictQuery",false)
+// db.connectToDatabase()
+//   .then(function () {
+//     app.listen(port, () => {
+//       console.log("Server started on port 3000");
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Failed to connect to Database");
+//     console.log(error);
+//   });
 
-db.connectToDatabase()
-  .then(function () {
-    app.listen(port, () => {
-      console.log("Server started on port 3000");
-    });
-  })
-  .catch(function (error) {
-    console.log("Failed to connect to Database");
-    console.log(error);
-  });
+const PORT = process.env.PORT || 4000;
+
+// Require the database module
+const { connectToDatabase, getDb } = require('./data/databse');
+
+// Call the connectToDatabase function
+connectToDatabase();
+
+
+app.listen(PORT, () => {
+  console.log(`Server listening on PORT ${PORT}`);
+});
