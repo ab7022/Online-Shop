@@ -32,35 +32,25 @@ app.use(checkAuthStatusMiddleware);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.set("views/admin", path.join(__dirname, "views/admin"));
+app.use(baseRoutes);
+
 app.use("/orders", protectRoutesMiddleware, ordersRoutes);
 app.use("/admin", protectRoutesMiddleware, adminRoutes);
 app.use("/cart", cartRoutes);
 app.use(authRoutes);
 app.use(productsRoutes);
-app.use(baseRoutes);
 app.use(notFoundMiddleware);
 
-let port =  process.env.PORT || 3000
-mongoose.set("strictQuery",false)
-db.connectToDatabase()
-  .then(function () {
-    app.listen(port, () => {
-      console.log("Server started on port 3000");
-    });
-  })
-  .catch(function (error) {
-    console.log("Failed to connect to Database");
-    console.log(error);
-  });
+// let port =  process.env.PORT || 4000
+// mongoose.set("strictQuery",false)
+// db.connectToDatabase()
+//   .then(function () {
+//     app.listen(port, () => {
+//       console.log("Server started on port 4000");
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Failed to connect to Database");
+//     console.log(error);
+//   });
 
-// const PORT = process.env.PORT || 4000;
-
-// // Require the database module
-// const { connectToDatabase, getDb } = require('./data/databse');
-
-// // Call the connectToDatabase function
-// connectToDatabase();
-
-// app.listen(PORT, () => {
-//   console.log(`Server listening on PORT ${PORT}`);
-// });

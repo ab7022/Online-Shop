@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const productsController = require("../controllers/product.controller");
-
-router.get("/", productsController.index);
-
+router.get("/", function (req, res) {
+  res.render("shared/index");
+});
 router.get("/401", function (req, res) {
   res.status(401).render("shared/401");
 });
