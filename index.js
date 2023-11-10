@@ -58,15 +58,21 @@ app.use(express.json()); // Parse JSON bodies
 
 
 // Start the server after connecting to the database
-db.connectToDatabase()
-  .then(() => {
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`Server listening on PORT ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+// db.connectToDatabase()
+//   .then(() => {
+//     const PORT = process.env.PORT || 5000;
+//     app.listen(PORT, () => {
+//       console.log(`Server listening on PORT ${PORT}`);
+//     });
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//     process.exit(1);
+//   });
+const PORT = process.env.PORT || 8000
 
+db.connectDB().then(() => {
+  app.listen(PORT, () => {
+      console.log("listening for requests");
+  })
+})
