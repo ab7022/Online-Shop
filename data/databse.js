@@ -31,19 +31,21 @@
 
 
 
-
 require('dotenv').config();
 
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
+let database; // Declare the database variable
+
 const connectToDatabase = async () => {
   try {
     console.log('MongoDB URL:', process.env.MONGODB_URL);
     const connection = await mongoose.connect(process.env.MONGODB_URL);
     console.log(`MongoDB connected: ${connection.connection.host}`);
-    return connection.connection.db;
+    database = connection.connection.db; // Assign the connected database to the variable
+    return database; // Return the connected database
   } catch (error) {
     console.error(error);
     process.exit(1);
@@ -57,27 +59,15 @@ const connectToDatabasePromise = () => {
       .catch((error) => reject(error));
   });
 };
+
 function getDb() {
   if (!database) {
     throw new Error("You must connect first");
   }
   return database;
 }
-connectToDatabasePromise()
-  .then((database) => {
-
-    const PORT = process.env.PORT || 4000
-
-    app.listen(PORT, () => {
-      console.log(`Server listening on PORT ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
 
 module.exports = {
   connectToDatabase: connectToDatabase,
-  getDb:getDb
+  getDb: getDb
 };

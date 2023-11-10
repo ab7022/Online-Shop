@@ -41,7 +41,7 @@ app.use(authRoutes);
 app.use(productsRoutes);
 app.use(notFoundMiddleware);
 
-// let port =  process.env.PORT || 4000
+// let port =  4000
 // mongoose.set("strictQuery",false)
 // db.connectToDatabase()
 //   .then(function () {
@@ -53,4 +53,25 @@ app.use(notFoundMiddleware);
 //     console.log("Failed to connect to Database");
 //     console.log(error);
 //   });
+
+app.use(express.json()); // Parse JSON bodies
+
+// Your routes and other middleware can go here
+// For example:
+app.get("/", (req, res) => {
+  res.send("Hello, this is your Express app!");
+});
+
+// Start the server after connecting to the database
+db.connectToDatabase()
+  .then(() => {
+    const PORT = process.env.PORT || 4000;
+    app.listen(PORT, () => {
+      console.log(`Server listening on PORT ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 
