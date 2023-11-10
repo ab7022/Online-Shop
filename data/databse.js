@@ -108,7 +108,12 @@ const connectDB = async () => {
     process.exit(1);
   }
 }
-
+function getDb() {
+  if (!database) {
+    throw new Error("You must connect first");
+  }
+  return database;
+}
 
 // //Connect to the database before listening
 // connectDB().then(() => {
@@ -118,5 +123,6 @@ const connectDB = async () => {
 // })
 
 module.exports = {
-  connectDB:connectDB
+  connectDB:connectDB,
+  getDb:getDb
 }
