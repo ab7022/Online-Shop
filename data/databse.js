@@ -95,7 +95,7 @@
 // };
 const express = require('express')
 const mongoose = require('mongoose')
-
+let database
 const app = express()
 // const PORT = process.env.PORT || 8000
 
@@ -103,6 +103,7 @@ const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/online-shop');
     console.log(`MongoDB Connected: ${conn.connection.host}`);
+    database = connection.connection.db; 
   } catch (error) {
     console.log(error);
     process.exit(1);
