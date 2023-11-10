@@ -56,16 +56,11 @@ app.use(notFoundMiddleware);
 
 app.use(express.json()); // Parse JSON bodies
 
-// Your routes and other middleware can go here
-// For example:
-app.get("/", (req, res) => {
-  res.send("Hello, this is your Express app!");
-});
 
 // Start the server after connecting to the database
 db.connectToDatabase()
   .then(() => {
-    const PORT = process.env.PORT || 4000;
+    const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
       console.log(`Server listening on PORT ${PORT}`);
     });

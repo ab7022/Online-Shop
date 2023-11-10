@@ -30,35 +30,55 @@
 
 
 
-
 require('dotenv').config();
 
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-
-let database; // Declare the database variable
+let database;
 
 const connectToDatabase = async () => {
   try {
     console.log('MongoDB URL:', process.env.MONGODB_URL);
-    const connection = await mongoose.connect(process.env.MONGODB_URL);
-    console.log(`MongoDB connected: ${connection.connection.host}`);
-    database = connection.connection.db; // Assign the connected database to the variable
-    return database; // Return the connected database
+    const connection = await mongoose.connect(process.env.MONGODB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    connection.connection.on('connected', () => {
+      console.log('MongoDB connected:', connection.connection.host);
+      database = connection.connection.db; // Assign the connected database
+    });
+
+    connection.connection.on('error', (err) => {
+      console.error('MongoDB connection error:', err);
+      process.exit(1);
+    });
+
+    return connection.connection.db;
   } catch (error) {
     console.error(error);
     process.exit(1);
   }
 };
 
-const connectToDatabasePromise = () => {
-  return new Promise((resolve, reject) => {
-    connectToDatabase()
-      .then((database) => resolve(database))
-      .catch((error) => reject(error));
-  });
+const startServer = async () => {
+  try {
+    await connectToDatabase(); // Wait for the database connection
+
+    const PORT = process.env.PORT || 2000;
+
+    // Assuming `app` is defined elsewhere in your code
+    app.listen(PORT, () => {
+      console.log(`Server listening on PORT ${PORT}`);
+    });
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
 };
+
+startServer();
 
 function getDb() {
   if (!database) {
@@ -66,8 +86,10 @@ function getDb() {
   }
   return database;
 }
-
+app.get('/', (req, res) => {
+  res.send('Hello, this is the home route!');
+});
 module.exports = {
   connectToDatabase: connectToDatabase,
-  getDb: getDb
+  getDb: getDb,
 };
