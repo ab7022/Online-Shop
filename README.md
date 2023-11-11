@@ -22,7 +22,7 @@ To set up the E-Commerce Website on your local machine, follow these steps:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/e-commerce-website.git\
+   git clone https://github.com/ab7022/Online-Shop.git/
 
 2. install the repositories:
 ```bash
