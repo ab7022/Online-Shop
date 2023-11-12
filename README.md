@@ -15,11 +15,11 @@ The E-Commerce Website is a robust online shopping platform that allows business
 
 ## Screenshots
 
-<a href="https://ibb.co/pnvsRjM"><img src="https://i.ibb.co/pnvsRjM/main1.png" alt="main1" border="0" width="90%"></a>
-<a href="https://ibb.co/SNsZWMH"><img src="https://i.ibb.co/SNsZWMH/main2.png" alt="main2" border="0" width="50%"></a>
-<a href="https://ibb.co/9yJrK5G"><img src="https://i.ibb.co/9yJrK5G/main3.png" alt="main3" border="0" width="49%"></a>
-<a href="https://ibb.co/DbFzdCb"><img src="https://i.ibb.co/DbFzdCb/main5.png" alt="main5" border="0" width="50%"></a>
-<a href="https://ibb.co/s9wZwMv"><img src="https://i.ibb.co/s9wZwMv/main6.png" alt="main6" border="0" width="49%"></a>
+<a href="https://ibb.co/pnvsRjM"><img src="https://i.ibb.co/pnvsRjM/main1.png" alt="main1" border="0" width="100%"></a>
+<a href="https://ibb.co/SNsZWMH"><img src="https://i.ibb.co/SNsZWMH/main2.png" alt="main2" border="0" width="24%"></a>
+<a href="https://ibb.co/9yJrK5G"><img src="https://i.ibb.co/9yJrK5G/main3.png" alt="main3" border="0" width="24%"></a>
+<a href="https://ibb.co/DbFzdCb"><img src="https://i.ibb.co/DbFzdCb/main5.png" alt="main5" border="0" width="24%"></a>
+<a href="https://ibb.co/s9wZwMv"><img src="https://i.ibb.co/s9wZwMv/main6.png" alt="main6" border="0" width="24%"></a>
 <a href="https://ibb.co/yg84T9p"><img src="https://i.ibb.co/yg84T9p/main4.png" alt="main4" border="0" width="100%"></a>
 
 
