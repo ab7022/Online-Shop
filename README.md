@@ -2,8 +2,7 @@
 
 ## Description
 
-The E-Commerce Website is a robust online shopping platform that allows businesses to showcase their products and enables customers to browse, search, and purchase products seamlessly. It provides an end-to-end e-commerce solution, from product listings and shopping cart management to secure payment processing.
-and it is is in Development!!!
+The E-Commerce Website is a robust online shopping platform that allows businesses to showcase their products and enables customers to browse, and purchase products seamlessly. It provides an end-to-end e-commerce solution, from product listings and shopping cart management to secure payment processing.
 
 ## Table of Contents
 
@@ -13,7 +12,16 @@ and it is is in Development!!!
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [License](#license)
+
+## Screenshots
+
+<a href="https://ibb.co/pnvsRjM"><img src="https://i.ibb.co/pnvsRjM/main1.png" alt="main1" border="0" width="90%"></a>
+<a href="https://ibb.co/SNsZWMH"><img src="https://i.ibb.co/SNsZWMH/main2.png" alt="main2" border="0" width="50%"></a>
+<a href="https://ibb.co/9yJrK5G"><img src="https://i.ibb.co/9yJrK5G/main3.png" alt="main3" border="0" width="49%"></a>
+<a href="https://ibb.co/DbFzdCb"><img src="https://i.ibb.co/DbFzdCb/main5.png" alt="main5" border="0" width="50%"></a>
+<a href="https://ibb.co/s9wZwMv"><img src="https://i.ibb.co/s9wZwMv/main6.png" alt="main6" border="0" width="49%"></a>
+<a href="https://ibb.co/yg84T9p"><img src="https://i.ibb.co/yg84T9p/main4.png" alt="main4" border="0" width="100%"></a>
+
 
 ## Installation
 
@@ -35,30 +43,50 @@ To set up the E-Commerce Website on your local machine, follow these steps:
 ## Usage
 The E-Commerce Website provides the following features for both customers and administrators:
 
-## Customers
-- Browse Products: Customers can view a wide range of products organized by categories.
 
-- Search Products: Use the search bar to find specific products quickly.
+## Customer Features
 
-- Product Details: Click on a product to view detailed information, including images, price, and descriptions.
+1. **Browse Products:**
+   - Explore a diverse range of products fetched from the database and organized by categories.
 
-- Add to Cart: Add products to the shopping cart for later purchase.
+2. **Product Details:**
+   - Click on a product to access detailed information, including images, price, and descriptions.
 
-- Checkout: Review the cart, provide shipping information, and make secure payments.
+3. **Add to Cart:**
+   - Easily add products to the shopping cart for later purchase.
 
-## Administrators
-- Product Management: Admins can add, update, and remove products from the catalog.
+4. **Checkout:**
+   - Review the cart, provide shipping information, and make secure payments.
 
-- Order Management: View and manage customer orders, including order status and shipping information.
+## Administrator Features
 
+1. **Product Management:**
+   - Add, update, and remove products from the catalog.
+
+2. **Order Management:**
+   - View and manage customer orders, including order status, shipping information, and the latest product availability.
+
+   - **Change Shipping Status:**
+     - Update the shipping status for orders.
+
+   - **Change Order Status:**
+     - Modify the order status for efficient order tracking.
+
+   - **Update Product Availability:**
+     - Ensure that the latest product availability is fetched from the database while processing orders.
+
+   - **Add Latest Value While Ordering:**
+ 
 ## Technologies Used
-This project leverages various technologies and tools to provide a seamless e-commerce experience:
 
-Node.js
-Express.js
-MongoDB
-HTML/CSS
-JavaScript
+This project leverages the following technologies and tools to deliver a robust e-commerce experience:
+
+- **Node.js**
+- **Express.js**
+- **MongoDB**
+- **HTML/CSS**
+- **JavaScript**
+
 
 ## Features
 Key features of the E-Commerce Website include:
